@@ -66,6 +66,17 @@ public interface HistogramConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "linewidth",
+			name = "Line Width",
+			description = "How wide (in pixels) should each tick/input marker be",
+			section = panelSection
+	)
+	default int linewidth()
+	{
+		return 2;
+	}
+
+	@ConfigItem(
 			keyName = "antialiasing",
 			name = "Anti-aliasing",
 			description = "Should event indicators be anti-aliased",

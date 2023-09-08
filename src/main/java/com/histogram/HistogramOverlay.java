@@ -83,16 +83,21 @@ class HistogramOverlay extends Overlay
             graphics.setColor(left);
             graphics.fillRect((int)xpos, 0, 1, config.panelSize().height);
 
-            if ((int)xpos + 1 < config.panelSize().width)
+            if (config.linewidth() > 1 && (int)xpos + 1 < config.panelSize().width) {
+                graphics.setColor(color);
+                graphics.fillRect((int)xpos + 1, 0, config.linewidth() - 1, config.panelSize().height);
+            }
+
+            if ((int)xpos + config.linewidth() + 1 < config.panelSize().width)
             {
                 graphics.setColor(right);
-                graphics.fillRect((int) xpos + 1, 0, 1, config.panelSize().height);
+                graphics.fillRect((int) xpos + config.linewidth(), 0, 1, config.panelSize().height);
             }
         }
         else
         {
             graphics.setColor(color);
-            graphics.fillRect((int)xpos, 0, 1, config.panelSize().height);
+            graphics.fillRect((int)xpos, 0, config.linewidth(), config.panelSize().height);
         }
     }
 
