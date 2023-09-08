@@ -87,6 +87,17 @@ public interface HistogramConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+			keyName = "idealticks",
+			name = "Show Ideal Tickrate",
+			description = "Should we display ideal 0.6s interval ticks as well as actual ticks",
+			section = panelSection
+	)
+	default boolean useIdealTicks()
+	{
+		return false;
+	}
+
 	@Alpha
 	@ConfigItem(
 			keyName = "tick",
@@ -98,6 +109,19 @@ public interface HistogramConfig extends Config
 	default Color tickColor()
 	{
 		return new Color(0, 255, 255, 255);
+	}
+
+	@Alpha
+	@ConfigItem(
+			keyName = "idealtick",
+			name = "Ideal Tick Color",
+			description = "Color of the simulated ideal gametick timing",
+			section = eventSection,
+			position = 0
+	)
+	default Color idealTickColor()
+	{
+		return new Color(127, 255, 255, 127);
 	}
 
 	@Alpha

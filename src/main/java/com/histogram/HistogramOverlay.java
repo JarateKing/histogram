@@ -107,6 +107,8 @@ class HistogramOverlay extends Overlay
         {
             case TICK:
                 return config.tickColor();
+            case IDEAL_TICK:
+                return config.idealTickColor();
             case EQUIP:
                 return config.equipColor();
             case EAT:

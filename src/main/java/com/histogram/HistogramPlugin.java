@@ -58,6 +58,10 @@ public class HistogramPlugin extends Plugin
 	public void onGameTick(GameTick tick)
 	{
 		histogramOverlay.addEvent(EventType.TICK);
+
+		if (config.useIdealTicks()) {
+			histogramOverlay.addEvent(EventType.IDEAL_TICK, 0.600f);
+		}
 	}
 
 	@Subscribe
