@@ -112,6 +112,8 @@ class HistogramOverlay extends Overlay
                 return config.useColor();
             case ATTACK:
                 return config.attackColor();
+            case SPECIAL_ATTACK:
+                return config.specColor();
             case PRAYER:
                 return config.prayerColor();
             default:
