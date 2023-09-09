@@ -128,7 +128,16 @@ public class HistogramPlugin extends Plugin
 
 		if (checksTilPing == 0)
 		{
-			ping = sendPing();
+			int currentping = sendPing();
+
+			if (currentping != -1)
+			{
+				ping = currentping;
+			}
+			else
+			{
+				pingtime = ping;
+			}
 			checksTilPing = config.pingCount() - 1;
 		}
 		else
