@@ -117,7 +117,7 @@ public interface HistogramConfig extends Config
 			name = "Ideal Tick Color",
 			description = "Color of the simulated ideal gametick timing",
 			section = eventSection,
-			position = 0
+			position = 1
 	)
 	default Color idealTickColor()
 	{
@@ -129,7 +129,8 @@ public interface HistogramConfig extends Config
 			keyName = "equip",
 			name = "Equip Color",
 			description = "Color of the equip event",
-			section = eventSection
+			section = eventSection,
+			position = 5
 	)
 	default Color equipColor()
 	{
@@ -141,7 +142,8 @@ public interface HistogramConfig extends Config
 			keyName = "eat",
 			name = "Eat Color",
 			description = "Color of the eat event",
-			section = eventSection
+			section = eventSection,
+			position = 4
 	)
 	default Color eatColor()
 	{
@@ -153,7 +155,8 @@ public interface HistogramConfig extends Config
 			keyName = "move",
 			name = "Move Color",
 			description = "Color of the walk/run events",
-			section = eventSection
+			section = eventSection,
+			position = 6
 	)
 	default Color moveColor()
 	{
@@ -165,7 +168,8 @@ public interface HistogramConfig extends Config
 			keyName = "use",
 			name = "Use Color",
 			description = "Color of the use events",
-			section = eventSection
+			section = eventSection,
+			position = 8
 	)
 	default Color useColor()
 	{
@@ -177,7 +181,8 @@ public interface HistogramConfig extends Config
 			keyName = "attack",
 			name = "Attack Color",
 			description = "Color of the attack events",
-			section = eventSection
+			section = eventSection,
+			position = 2
 	)
 	default Color attackColor()
 	{
@@ -189,7 +194,8 @@ public interface HistogramConfig extends Config
 			keyName = "spec",
 			name = "Special Attack Color",
 			description = "Color of special attack events",
-			section = eventSection
+			section = eventSection,
+			position = 3
 	)
 	default Color specColor()
 	{
@@ -201,7 +207,8 @@ public interface HistogramConfig extends Config
 			keyName = "prayer",
 			name = "Prayer Color",
 			description = "Color of the prayer events",
-			section = eventSection
+			section = eventSection,
+			position = 7
 	)
 	default Color prayerColor()
 	{
