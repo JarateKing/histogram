@@ -240,4 +240,15 @@ public interface HistogramConfig extends Config
 	{
 		return 10000;
 	}
+
+	@ConfigItem(
+			keyName = "pingcount",
+			name = "Ping Every nth",
+			description = "How many input events are run before re-pinging",
+			section = advancedSection
+	)
+	default int pingCount()
+	{
+		return 5;
+	}
 }

@@ -39,6 +39,9 @@ public class HistogramPlugin extends Plugin
 	private HistogramOverlay histogramOverlay;
 	private ScheduledExecutorService pingThreads;
 
+	private int ping = -1;
+	private int checksTilPing = 0;
+
 	@Override
 	protected void startUp() throws Exception
 	{
@@ -110,9 +113,19 @@ public class HistogramPlugin extends Plugin
 
 	private float getInputDelay()
 	{
-		int ping = Ping.ping(worldService.getWorlds().findWorld(client.getWorld()));
+		if (checksTilPing == 0)
+		{
+			ping = sendPing();
+			checksTilPing = config.pingCount();
+		}
+
 		float delay = (ping / 1000f) * (config.pingCoefficient() / 1000f) + (config.pingConstant() / 1000f);
 		return Math.min(delay, (config.pingMax() / 1000f));
+	}
+
+	private int sendPing()
+	{
+		return Ping.ping(worldService.getWorlds().findWorld(client.getWorld()));
 	}
 
 	private String removeFormatting(String raw)
