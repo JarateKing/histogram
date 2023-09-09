@@ -95,6 +95,9 @@ class HistogramOverlay extends Overlay
         if (xpos + width < 0 || xpos >= config.panelSize().width)
             return;
 
+        if (color.getAlpha() == 0)
+            return;
+
         int boundedx = Math.max(xpos, 0);
         int boundedw = Math.min(xpos + width, config.panelSize().width) - boundedx;
 
