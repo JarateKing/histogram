@@ -256,6 +256,6 @@ public interface HistogramConfig extends Config
 	)
 	default int moveMult()
 	{
-		return 0;
+		return 60;
 	}
 }

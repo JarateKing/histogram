@@ -178,7 +178,7 @@ public class HistogramPlugin extends Plugin
 			case EAT:
 				return 0;
 			case MOVE:
-				return config.moveConst() / 1000f + (config.moveMult() / 1000f * playercount);
+				return config.moveConst() / 1000f + (config.moveMult() / 1000f * playercount / 1000f);
 			case USE:
 				return 0;
 			case ATTACK:
