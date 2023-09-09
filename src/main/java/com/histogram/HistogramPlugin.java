@@ -118,11 +118,12 @@ public class HistogramPlugin extends Plugin
 		if (checksTilPing == 0)
 		{
 			ping = sendPing();
-			checksTilPing = config.pingCount();
+			checksTilPing = config.pingCount() - 1;
 		}
 		else
 		{
 			pingtime = (ping / 1000f);
+			checksTilPing--;
 		}
 
 		float delay = pingtime + (ping / 1000f) * (config.pingCoefficient() / 1000f) + (config.pingConstant() / 1000f);
