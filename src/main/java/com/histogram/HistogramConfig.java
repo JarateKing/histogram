@@ -216,17 +216,6 @@ public interface HistogramConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "pingconstant",
-			name = "Ping Delay Constant",
-			description = "The value to add to ping to delay input ticks (in milliseconds)",
-			section = advancedSection
-	)
-	default int pingConstant()
-	{
-		return 60;
-	}
-
-	@ConfigItem(
 			keyName = "pingmax",
 			name = "Ping Delay Maximum",
 			description = "The maximum delay due to ping (in milliseconds). Doesn't interrupt pings, just limits the value returned.",
@@ -246,5 +235,27 @@ public interface HistogramConfig extends Config
 	default int pingCount()
 	{
 		return 5;
+	}
+
+	@ConfigItem(
+			keyName = "delaymoveconst",
+			name = "Move Delay Constant",
+			description = "The value to add to ping to delay move inputs (in milliseconds)",
+			section = advancedSection
+	)
+	default int moveConst()
+	{
+		return 60;
+	}
+
+	@ConfigItem(
+			keyName = "delaymovemult",
+			name = "Move Delay Mult",
+			description = "The value to add to ping to delay move inputs, multiplied by playercount (x1000)",
+			section = advancedSection
+	)
+	default int moveMult()
+	{
+		return 0;
 	}
 }
