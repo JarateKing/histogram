@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Example"
+	name = "Histogram"
 )
 public class HistogramPlugin extends Plugin
 {
