@@ -42,6 +42,8 @@ public class HistogramPlugin extends Plugin
 	private int ping = -1;
 	private int checksTilPing = 0;
 
+	private static final int HOP_GAMESTATE = 45;
+
 	@Override
 	protected void startUp() throws Exception
 	{
@@ -102,6 +104,15 @@ public class HistogramPlugin extends Plugin
 
 		if (menuOption.equals("Activate") || menuOption.equals("Deactivate")) {
 			pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.PRAYER, getInputDelay()); }, 0, TimeUnit.SECONDS);
+		}
+	}
+
+	@Subscribe
+	public void onGameStateChanged(GameStateChanged gameStateChanged)
+	{
+		if (gameStateChanged.getGameState().getState() == HOP_GAMESTATE)
+		{
+			checksTilPing = 0;
 		}
 	}
 
