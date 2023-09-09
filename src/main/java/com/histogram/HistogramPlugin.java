@@ -124,7 +124,7 @@ public class HistogramPlugin extends Plugin
 
 	private float getInputDelay()
 	{
-		float pingtime = 0;
+		int pingtime = 0;
 
 		if (checksTilPing == 0)
 		{
@@ -133,11 +133,11 @@ public class HistogramPlugin extends Plugin
 		}
 		else
 		{
-			pingtime = (ping / 1000f);
+			pingtime = ping;
 			checksTilPing--;
 		}
 
-		float delay = pingtime + (ping / 1000f) * (config.pingCoefficient() / 1000f) + (config.pingConstant() / 1000f);
+		float delay = (pingtime / 1000f) + (config.pingConstant() / 1000f);
 		return Math.min(delay, (config.pingMax() / 1000f));
 	}
 

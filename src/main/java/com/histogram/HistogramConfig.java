@@ -209,17 +209,6 @@ public interface HistogramConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "pingcoefficient",
-			name = "Ping Delay Coefficient",
-			description = "The value to multiply ping by to delay input ticks (x1000)",
-			section = advancedSection
-	)
-	default int pingCoefficient()
-	{
-		return 2000;
-	}
-
-	@ConfigItem(
 			keyName = "pingconstant",
 			name = "Ping Delay Constant",
 			description = "The value to add to ping to delay input ticks (in milliseconds)",
