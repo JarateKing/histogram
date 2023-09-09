@@ -233,7 +233,7 @@ public interface HistogramConfig extends Config
 	@ConfigItem(
 			keyName = "pingcount",
 			name = "Ping Every nth",
-			description = "How many input events are run before re-pinging",
+			description = "How many gameticks occur before re-pinging",
 			section = advancedSection
 	)
 	default int pingCount()

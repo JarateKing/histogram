@@ -67,6 +67,8 @@ public class HistogramPlugin extends Plugin
 		if (config.useIdealTicks()) {
 			histogramOverlay.addEvent(EventType.IDEAL_TICK, 0.600f);
 		}
+
+		pingThreads.schedule(this::updatePing, 0, TimeUnit.SECONDS);
 	}
 
 	@Subscribe
@@ -74,36 +76,36 @@ public class HistogramPlugin extends Plugin
 		String menuOption = e.getMenuOption();
 
 		if (menuOption.equals("Wield") || menuOption.equals("Wear") || menuOption.equals("Remove") || menuOption.equals("Hold")) {
-			pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.EQUIP, getInputDelay()); }, 0, TimeUnit.SECONDS);
+			histogramOverlay.addEvent(EventType.EQUIP, getInputDelay());
 		}
 
 		if (menuOption.equals("Eat") || menuOption.equals("Drink")) {
-			pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.EAT, getInputDelay()); }, 0, TimeUnit.SECONDS);
+			histogramOverlay.addEvent(EventType.EAT, getInputDelay());
 		}
 
 		if (menuOption.equals("Walk here")) {
-			pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.MOVE, getInputDelay()); }, 0, TimeUnit.SECONDS);
+			histogramOverlay.addEvent(EventType.MOVE, getInputDelay());
 		}
 
 		if (menuOption.equals("Use")) {
 			if (removeFormatting(e.getMenuTarget()).equals("Special Attack")) {
-				pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay()); }, 0, TimeUnit.SECONDS);
+				histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay());
 			}
 			else {
-				pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.USE, getInputDelay()); }, 0, TimeUnit.SECONDS);
+				histogramOverlay.addEvent(EventType.USE, getInputDelay());
 			}
 		}
 
 		if (removeFormatting(menuOption).equals("Use Special Attack")) {
-			pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay()); }, 0, TimeUnit.SECONDS);
+			histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay());
 		}
 
 		if (menuOption.equals("Attack")) {
-			pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.ATTACK, getInputDelay()); }, 0, TimeUnit.SECONDS);
+			histogramOverlay.addEvent(EventType.ATTACK, getInputDelay());
 		}
 
 		if (menuOption.equals("Activate") || menuOption.equals("Deactivate")) {
-			pingThreads.schedule(() -> { histogramOverlay.addEvent(EventType.PRAYER, getInputDelay()); }, 0, TimeUnit.SECONDS);
+			histogramOverlay.addEvent(EventType.PRAYER, getInputDelay());
 		}
 	}
 
@@ -124,8 +126,12 @@ public class HistogramPlugin extends Plugin
 
 	private float getInputDelay()
 	{
-		int pingtime = 0;
+		float delay = (ping / 1000f) + (config.pingConstant() / 1000f);
+		return Math.min(delay, (config.pingMax() / 1000f));
+	}
 
+	private void updatePing()
+	{
 		if (checksTilPing == 0)
 		{
 			int currentping = sendPing();
@@ -133,21 +139,13 @@ public class HistogramPlugin extends Plugin
 			if (currentping != -1)
 			{
 				ping = currentping;
+				checksTilPing = config.pingCount() - 1;
 			}
-			else
-			{
-				pingtime = ping;
-			}
-			checksTilPing = config.pingCount() - 1;
 		}
 		else
 		{
-			pingtime = ping;
 			checksTilPing--;
 		}
-
-		float delay = (pingtime / 1000f) + (config.pingConstant() / 1000f);
-		return Math.min(delay, (config.pingMax() / 1000f));
 	}
 
 	private int sendPing()
