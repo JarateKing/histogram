@@ -68,37 +68,38 @@ class HistogramOverlay extends Overlay
 
     private void drawBar(Graphics2D graphics, float time, EventType type)
     {
-        if (time >= config.durationMS() / 1000f || time < 0)
-            return;
-
         Color color = typeToColor(type);
         float xpos = lerp(config.panelSize().width, 0, time / (config.durationMS() / 1000f));
 
+        int fullbarwidth = config.linewidth() - ((config.antialiasing()) ? 1 : 0);
+        int fullbaroffset = (int)xpos + ((config.antialiasing() ? 1 : 0));
+        drawRect(graphics, color, fullbaroffset, fullbarwidth);
+
         if (config.antialiasing())
         {
-            float subpixel = xpos - ((int)xpos);
-            Color left = new Color(color.getRed(), color.getGreen(), color.getBlue(), (int)(color.getAlpha() * (1 - subpixel)));
-            Color right = new Color(color.getRed(), color.getGreen(), color.getBlue(), (int)(color.getAlpha() * subpixel));
+            float subpixel = xpos % 1 + ((xpos < 0) ? 1 : 0);
 
-            graphics.setColor(left);
-            graphics.fillRect((int)xpos, 0, 1, config.panelSize().height);
+            Color left = new Color(color.getRed(), color.getGreen(), color.getBlue(), (int) (color.getAlpha() * (1 - subpixel)));
+            Color right = new Color(color.getRed(), color.getGreen(), color.getBlue(), (int) (color.getAlpha() * subpixel));
 
-            if (config.linewidth() > 1 && (int)xpos + 1 < config.panelSize().width) {
-                graphics.setColor(color);
-                graphics.fillRect((int)xpos + 1, 0, config.linewidth() - 1, config.panelSize().height);
-            }
-
-            if ((int)xpos + config.linewidth() + 1 < config.panelSize().width)
-            {
-                graphics.setColor(right);
-                graphics.fillRect((int) xpos + config.linewidth(), 0, 1, config.panelSize().height);
-            }
+            drawRect(graphics, left, (int)xpos, 1);
+            drawRect(graphics, right, (int)xpos + config.linewidth(), 1);
         }
-        else
-        {
-            graphics.setColor(color);
-            graphics.fillRect((int)xpos, 0, config.linewidth(), config.panelSize().height);
-        }
+    }
+
+    private void drawRect(Graphics2D graphics, Color color, int xpos, int width)
+    {
+        if (width <= 0)
+            return;
+
+        if (xpos + width < 0 || xpos >= config.panelSize().width)
+            return;
+
+        int boundedx = Math.max(xpos, 0);
+        int boundedw = Math.min(xpos + width, config.panelSize().width) - boundedx;
+
+        graphics.setColor(color);
+        graphics.fillRect(boundedx, 0, boundedw, config.panelSize().height);
     }
 
     private Color typeToColor(EventType type)
@@ -152,7 +153,8 @@ class HistogramOverlay extends Overlay
         // as it is some events will persist longer than they need to because of these delays
         // however, all events will eventually surpass the max duration, so it's not an issue
         // the maximum duration, if kept at sane levels, shouldn't ever result in much buildup
-        while (!events.isEmpty() && events.peek().time > (config.durationMS() / 1000f))
+        float extratime = 1 + (float)config.linewidth() / (float)config.panelSize().width;
+        while (!events.isEmpty() && events.peek().time > (config.durationMS() / 1000f * extratime))
         {
             events.removeFirst();
         }
