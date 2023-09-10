@@ -130,7 +130,7 @@ public interface HistogramConfig extends Config
 			name = "Equip Color",
 			description = "Color of the equip event",
 			section = eventSection,
-			position = 5
+			position = 2
 	)
 	default Color equipColor()
 	{
@@ -143,7 +143,7 @@ public interface HistogramConfig extends Config
 			name = "Eat Color",
 			description = "Color of the eat event",
 			section = eventSection,
-			position = 4
+			position = 2
 	)
 	default Color eatColor()
 	{
@@ -156,7 +156,7 @@ public interface HistogramConfig extends Config
 			name = "Move Color",
 			description = "Color of the walk/run events",
 			section = eventSection,
-			position = 6
+			position = 2
 	)
 	default Color moveColor()
 	{
@@ -169,7 +169,7 @@ public interface HistogramConfig extends Config
 			name = "Use Color",
 			description = "Color of the use events",
 			section = eventSection,
-			position = 8
+			position = 2
 	)
 	default Color useColor()
 	{
@@ -195,7 +195,7 @@ public interface HistogramConfig extends Config
 			name = "Special Attack Color",
 			description = "Color of special attack events",
 			section = eventSection,
-			position = 3
+			position = 2
 	)
 	default Color specColor()
 	{
@@ -208,7 +208,7 @@ public interface HistogramConfig extends Config
 			name = "Prayer Color",
 			description = "Color of the prayer events",
 			section = eventSection,
-			position = 7
+			position = 2
 	)
 	default Color prayerColor()
 	{
@@ -219,7 +219,8 @@ public interface HistogramConfig extends Config
 			keyName = "pingmax",
 			name = "Ping Delay Maximum",
 			description = "The maximum delay due to ping (in milliseconds). Doesn't interrupt pings, just limits the value returned.",
-			section = advancedSection
+			section = advancedSection,
+			position = 0
 	)
 	default int pingMax()
 	{
@@ -230,7 +231,8 @@ public interface HistogramConfig extends Config
 			keyName = "pingcount",
 			name = "Ping Every nth",
 			description = "How many gameticks occur before re-pinging",
-			section = advancedSection
+			section = advancedSection,
+			position = 1
 	)
 	default int pingCount()
 	{
@@ -241,7 +243,8 @@ public interface HistogramConfig extends Config
 			keyName = "delaymoveconst",
 			name = "Move Delay Constant",
 			description = "The value to add to ping to delay move inputs (in milliseconds)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int moveConst()
 	{
@@ -252,7 +255,8 @@ public interface HistogramConfig extends Config
 			keyName = "delaymovemult",
 			name = "Move Delay Mult",
 			description = "The value to add to ping to delay move inputs, multiplied by playercount (x1000)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int moveMult()
 	{
@@ -263,7 +267,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayprayerconst",
 			name = "Prayer Delay Constant",
 			description = "The value to add to ping to delay prayer inputs (in milliseconds)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int prayerConst()
 	{
@@ -274,7 +279,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayprayermult",
 			name = "Prayer Delay Mult",
 			description = "The value to add to ping to delay prayer inputs, multiplied by playercount (x1000)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int prayerMult()
 	{
@@ -285,7 +291,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayattackconst",
 			name = "Attack Delay Constant",
 			description = "The value to add to ping to delay attack inputs (in milliseconds)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int attackConst()
 	{
@@ -296,7 +303,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayattackmult",
 			name = "Attack Delay Mult",
 			description = "The value to add to ping to delay attack inputs, multiplied by playercount (x1000)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int attackMult()
 	{
@@ -307,7 +315,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayspecialattackconst",
 			name = "Special Attack Delay Constant",
 			description = "The value to add to ping to delay specialattack inputs (in milliseconds)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int specialattackConst()
 	{
@@ -318,7 +327,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayspecialattackmult",
 			name = "Special Attack Delay Mult",
 			description = "The value to add to ping to delay specialattack inputs, multiplied by playercount (x1000)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int specialattackMult()
 	{
@@ -329,7 +339,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayeatconst",
 			name = "Eat Delay Constant",
 			description = "The value to add to ping to delay eat inputs (in milliseconds)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int eatConst()
 	{
@@ -340,7 +351,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayeatmult",
 			name = "Eat Delay Mult",
 			description = "The value to add to ping to delay eat inputs, multiplied by playercount (x1000)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int eatMult()
 	{
@@ -351,7 +363,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayuseconst",
 			name = "Use Delay Constant",
 			description = "The value to add to ping to delay use inputs (in milliseconds)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int useConst()
 	{
@@ -362,7 +375,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayusemult",
 			name = "Use Delay Mult",
 			description = "The value to add to ping to delay use inputs, multiplied by playercount (x1000)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int useMult()
 	{
@@ -373,7 +387,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayequipconst",
 			name = "Equip Delay Constant",
 			description = "The value to add to ping to delay equip inputs (in milliseconds)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int equipConst()
 	{
@@ -384,7 +399,8 @@ public interface HistogramConfig extends Config
 			keyName = "delayequipmult",
 			name = "Equip Delay Mult",
 			description = "The value to add to ping to delay equip inputs, multiplied by playercount (x1000)",
-			section = advancedSection
+			section = advancedSection,
+			position = 2
 	)
 	default int equipMult()
 	{
