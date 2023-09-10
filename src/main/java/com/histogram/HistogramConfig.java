@@ -258,4 +258,136 @@ public interface HistogramConfig extends Config
 	{
 		return 60;
 	}
+
+	@ConfigItem(
+			keyName = "delayprayerconst",
+			name = "Prayer Delay Constant",
+			description = "The value to add to ping to delay prayer inputs (in milliseconds)",
+			section = advancedSection
+	)
+	default int prayerConst()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delayprayermult",
+			name = "Prayer Delay Mult",
+			description = "The value to add to ping to delay prayer inputs, multiplied by playercount (x1000)",
+			section = advancedSection
+	)
+	default int prayerMult()
+	{
+		return 60;
+	}
+
+	@ConfigItem(
+			keyName = "delayattackconst",
+			name = "Attack Delay Constant",
+			description = "The value to add to ping to delay attack inputs (in milliseconds)",
+			section = advancedSection
+	)
+	default int attackConst()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delayattackmult",
+			name = "Attack Delay Mult",
+			description = "The value to add to ping to delay attack inputs, multiplied by playercount (x1000)",
+			section = advancedSection
+	)
+	default int attackMult()
+	{
+		return 90;
+	}
+
+	@ConfigItem(
+			keyName = "delayspecialattackconst",
+			name = "Special Attack Delay Constant",
+			description = "The value to add to ping to delay specialattack inputs (in milliseconds)",
+			section = advancedSection
+	)
+	default int specialattackConst()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delayspecialattackmult",
+			name = "Special Attack Delay Mult",
+			description = "The value to add to ping to delay specialattack inputs, multiplied by playercount (x1000)",
+			section = advancedSection
+	)
+	default int specialattackMult()
+	{
+		return 90;
+	}
+
+	@ConfigItem(
+			keyName = "delayeatconst",
+			name = "Eat Delay Constant",
+			description = "The value to add to ping to delay eat inputs (in milliseconds)",
+			section = advancedSection
+	)
+	default int eatConst()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delayeatmult",
+			name = "Eat Delay Mult",
+			description = "The value to add to ping to delay eat inputs, multiplied by playercount (x1000)",
+			section = advancedSection
+	)
+	default int eatMult()
+	{
+		return 90;
+	}
+
+	@ConfigItem(
+			keyName = "delayuseconst",
+			name = "Use Delay Constant",
+			description = "The value to add to ping to delay use inputs (in milliseconds)",
+			section = advancedSection
+	)
+	default int useConst()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delayusemult",
+			name = "Use Delay Mult",
+			description = "The value to add to ping to delay use inputs, multiplied by playercount (x1000)",
+			section = advancedSection
+	)
+	default int useMult()
+	{
+		return 90;
+	}
+
+	@ConfigItem(
+			keyName = "delayequipconst",
+			name = "Equip Delay Constant",
+			description = "The value to add to ping to delay equip inputs (in milliseconds)",
+			section = advancedSection
+	)
+	default int equipConst()
+	{
+		return 30;
+	}
+
+	@ConfigItem(
+			keyName = "delayequipmult",
+			name = "Equip Delay Mult",
+			description = "The value to add to ping to delay equip inputs, multiplied by playercount (x1000)",
+			section = advancedSection
+	)
+	default int equipMult()
+	{
+		return 90;
+	}
 }

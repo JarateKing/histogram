@@ -169,24 +169,20 @@ public class HistogramPlugin extends Plugin
 
 		switch (type)
 		{
-			case TICK:
-				return 0;
-			case IDEAL_TICK:
-				return 0;
 			case EQUIP:
-				return 0;
+				return config.equipConst() / 1000f + (config.equipMult() / 1000f * playercount / 1000f);
 			case EAT:
-				return 0;
+				return config.eatConst() / 1000f + (config.eatMult() / 1000f * playercount / 1000f);
 			case MOVE:
 				return config.moveConst() / 1000f + (config.moveMult() / 1000f * playercount / 1000f);
 			case USE:
-				return 0;
+				return config.useConst() / 1000f + (config.useMult() / 1000f * playercount / 1000f);
 			case ATTACK:
-				return 0;
+				return config.attackConst() / 1000f + (config.attackMult() / 1000f * playercount / 1000f);
 			case SPECIAL_ATTACK:
-				return 0;
+				return config.specialattackConst() / 1000f + (config.specialattackMult() / 1000f * playercount / 1000f);
 			case PRAYER:
-				return 0;
+				return config.prayerConst() / 1000f + (config.prayerMult() / 1000f * playercount / 1000f);
 			default:
 				return 0;
 		}
