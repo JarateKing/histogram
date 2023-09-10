@@ -76,36 +76,36 @@ public class HistogramPlugin extends Plugin
 		String menuOption = e.getMenuOption();
 
 		if (menuOption.equals("Wield") || menuOption.equals("Wear") || menuOption.equals("Remove") || menuOption.equals("Hold")) {
-			histogramOverlay.addEvent(EventType.EQUIP, getInputDelay(EventType.EQUIP));
+			histogramOverlay.addEvent(EventType.EQUIP, getInputDelay(EventType.EQUIP), getServerDelay(EventType.EQUIP));
 		}
 
 		if (menuOption.equals("Eat") || menuOption.equals("Drink")) {
-			histogramOverlay.addEvent(EventType.EAT, getInputDelay(EventType.EAT));
+			histogramOverlay.addEvent(EventType.EAT, getInputDelay(EventType.EAT), getServerDelay(EventType.EAT));
 		}
 
 		if (menuOption.equals("Walk here")) {
-			histogramOverlay.addEvent(EventType.MOVE, getInputDelay(EventType.MOVE));
+			histogramOverlay.addEvent(EventType.MOVE, getInputDelay(EventType.MOVE), getServerDelay(EventType.MOVE));
 		}
 
 		if (menuOption.equals("Use")) {
 			if (removeFormatting(e.getMenuTarget()).equals("Special Attack")) {
-				histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay(EventType.SPECIAL_ATTACK));
+				histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay(EventType.SPECIAL_ATTACK), getServerDelay(EventType.SPECIAL_ATTACK));
 			}
 			else {
-				histogramOverlay.addEvent(EventType.USE, getInputDelay(EventType.USE));
+				histogramOverlay.addEvent(EventType.USE, getInputDelay(EventType.USE), getServerDelay(EventType.USE));
 			}
 		}
 
 		if (removeFormatting(menuOption).equals("Use Special Attack")) {
-			histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay(EventType.SPECIAL_ATTACK));
+			histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay(EventType.SPECIAL_ATTACK), getServerDelay(EventType.SPECIAL_ATTACK));
 		}
 
 		if (menuOption.equals("Attack")) {
-			histogramOverlay.addEvent(EventType.ATTACK, getInputDelay(EventType.ATTACK));
+			histogramOverlay.addEvent(EventType.ATTACK, getInputDelay(EventType.ATTACK), getServerDelay(EventType.ATTACK));
 		}
 
 		if (menuOption.equals("Activate") || menuOption.equals("Deactivate")) {
-			histogramOverlay.addEvent(EventType.PRAYER, getInputDelay(EventType.PRAYER));
+			histogramOverlay.addEvent(EventType.PRAYER, getInputDelay(EventType.PRAYER), getServerDelay(EventType.PRAYER));
 		}
 	}
 
@@ -126,7 +126,7 @@ public class HistogramPlugin extends Plugin
 
 	private float getInputDelay(EventType event)
 	{
-		float delay = (ping / 1000f) + typeToDelay(event);
+		float delay = (ping / 1000f);
 		return Math.min(delay, (config.pingMax() / 1000f));
 	}
 
@@ -163,7 +163,7 @@ public class HistogramPlugin extends Plugin
 		return raw.replaceAll("<[^>]*>", "");
 	}
 
-	private float typeToDelay(EventType type)
+	private float getServerDelay(EventType type)
 	{
 		int playercount = getPlayerCount();
 

@@ -10,11 +10,15 @@ class HistogramOverlay extends Overlay
     {
         public EventType type;
         public float time;
+        public float inputOffset;
+        public float serverOffset;
 
         Event(EventType type)
         {
             this.type = type;
             this.time = 0;
+            this.inputOffset = 0;
+            this.serverOffset = 0;
         }
     }
 
@@ -46,6 +50,15 @@ class HistogramOverlay extends Overlay
         events.add(event);
     }
 
+    public void addEvent(EventType type, float pingdelay, float serverdelay)
+    {
+        Event event = new Event(type);
+        event.time -= pingdelay + serverdelay;
+        event.serverOffset = serverdelay;
+        event.inputOffset = pingdelay + serverdelay;
+        events.add(event);
+    }
+
     @Override
     public Dimension render(Graphics2D graphics) {
         graphics.setColor(config.bgColor());
@@ -63,6 +76,12 @@ class HistogramOverlay extends Overlay
         for (Event event : events)
         {
             drawBar(graphics, event.time, event.type);
+
+            if (config.showInputLag())
+                drawRange(graphics, event.time + event.inputOffset, event.time, event.type, config.inputLagAlpha());
+
+            if (config.showServerLag())
+                drawRange(graphics, event.time + event.serverOffset, event.time, event.type, config.serverLagAlpha());
         }
     }
 
@@ -84,6 +103,26 @@ class HistogramOverlay extends Overlay
 
             drawRect(graphics, left, (int)xpos, 1);
             drawRect(graphics, right, (int)xpos + config.linewidth(), 1);
+        }
+    }
+
+    private void drawRange(Graphics2D graphics, float start, float end, EventType type, int alpha)
+    {
+        Color originalColor = typeToColor(type);
+        Color color = new Color(originalColor.getRed(), originalColor.getGreen(), originalColor.getBlue(), (int)(originalColor.getAlpha() * (alpha / 255f)));
+
+        float xpos = lerp(config.panelSize().width, 0, start / (config.durationMS() / 1000f));
+        float width = lerp(config.panelSize().width, 0, end / (config.durationMS() / 1000f)) - xpos;
+        float subpixel = xpos % 1 + ((xpos < 0) ? 1 : 0);
+
+        int fullbarwidth = (int)(width + subpixel + 1);
+        int fullbaroffset = (int)xpos + ((config.antialiasing() ? 1 : 0));
+        drawRect(graphics, color, fullbaroffset, fullbarwidth);
+
+        if (config.antialiasing())
+        {
+            Color left = new Color(color.getRed(), color.getGreen(), color.getBlue(), (int) (color.getAlpha() * (1 - subpixel)));
+            drawRect(graphics, left, (int)xpos, 1);
         }
     }
 

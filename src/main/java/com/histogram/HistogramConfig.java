@@ -98,6 +98,54 @@ public interface HistogramConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+			keyName = "inputlag",
+			name = "Show Clientside Input",
+			description = "Display the range from the clientside input event to it being fully processed.",
+			section = panelSection,
+			position = 3
+	)
+	default boolean showInputLag()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "inputlagalpha",
+			name = "Clientside Input Alpha",
+			description = "Alpha value of input range.",
+			section = panelSection,
+			position = 4
+	)
+	default int inputLagAlpha()
+	{
+		return 50;
+	}
+
+	@ConfigItem(
+			keyName = "serverlag",
+			name = "Show Serverside Processing",
+			description = "Display the range from when the server receives the event to it being fully processed.",
+			section = panelSection,
+			position = 5
+	)
+	default boolean showServerLag()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			keyName = "serverlagalpha",
+			name = "Serverside Processing Alpha",
+			description = "Alpha value of server processing range.",
+			section = panelSection,
+			position = 6
+	)
+	default int serverLagAlpha()
+	{
+		return 50;
+	}
+
 	@Alpha
 	@ConfigItem(
 			keyName = "tick",
