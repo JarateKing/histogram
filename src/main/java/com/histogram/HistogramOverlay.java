@@ -77,11 +77,18 @@ class HistogramOverlay extends Overlay
         {
             drawBar(graphics, event.time, event.type);
 
-            if (config.showInputLag())
-                drawRange(graphics, event.time + event.inputOffset, event.time, event.type, config.inputLagAlpha());
+            if (event.inputOffset != 0 && event.serverOffset != 0)
+            {
+                if (config.showInputLag())
+                {
+                    drawRange(graphics, event.time + event.inputOffset, event.time, event.type, config.inputLagAlpha());
+                }
 
-            if (config.showServerLag())
-                drawRange(graphics, event.time + event.serverOffset, event.time, event.type, config.serverLagAlpha());
+                if (config.showServerLag())
+                {
+                    drawRange(graphics, event.time + event.serverOffset, event.time, event.type, config.serverLagAlpha());
+                }
+            }
         }
     }
 
