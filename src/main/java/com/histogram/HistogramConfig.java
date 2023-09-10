@@ -260,7 +260,7 @@ public interface HistogramConfig extends Config
 	)
 	default Color prayerColor()
 	{
-		return new Color(0, 0, 255, 255);
+		return new Color(85, 85, 255, 255);
 	}
 
 	@ConfigItem(
