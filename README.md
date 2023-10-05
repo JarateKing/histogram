@@ -2,7 +2,7 @@
 
 A runelite plugin that provides a visual window of gametick timings compared with various input events, factoring in inconsistent tickrates, ping, and server load. Intended to train prayer flicks, gear switching, movement, etc. But it's also useful for detecting server/networking issues.
 
-Setup to detect inputs for attacking, eating, equipping items, moving, toggling prayers, toggling special attack, and using items.
+Setup to detect inputs for attacking, eating, equipping items, moving, toggling prayers, toggling special attack, and using items. Custom events can be added as well, though the default timings for them may be off and require some fiddling.
 
 The config includes several other options as well, like visualizing the effects of ping and/or server processing time, or visualizing the ideal tickrate.
 
