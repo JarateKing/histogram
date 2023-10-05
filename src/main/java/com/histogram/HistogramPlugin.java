@@ -14,6 +14,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.api.events.*;
 import net.runelite.client.game.WorldService;
 
+import java.awt.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -73,40 +74,52 @@ public class HistogramPlugin extends Plugin
 
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked e) {
-		String menuOption = e.getMenuOption();
+		String menuOption = removeFormatting(e.getMenuOption());
+		String menuTarget = removeFormatting(e.getMenuTarget());
 
 		if (menuOption.equals("Wield") || menuOption.equals("Wear") || menuOption.equals("Remove") || menuOption.equals("Hold")) {
 			histogramOverlay.addEvent(EventType.EQUIP, getInputDelay(EventType.EQUIP), getServerDelay(EventType.EQUIP));
+			return;
 		}
 
 		if (menuOption.equals("Eat") || menuOption.equals("Drink")) {
 			histogramOverlay.addEvent(EventType.EAT, getInputDelay(EventType.EAT), getServerDelay(EventType.EAT));
+			return;
 		}
 
 		if (menuOption.equals("Walk here")) {
 			histogramOverlay.addEvent(EventType.MOVE, getInputDelay(EventType.MOVE), getServerDelay(EventType.MOVE));
+			return;
 		}
 
 		if (menuOption.equals("Use")) {
-			if (removeFormatting(e.getMenuTarget()).equals("Special Attack")) {
+			if (menuTarget.equals("Special Attack")) {
 				histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay(EventType.SPECIAL_ATTACK), getServerDelay(EventType.SPECIAL_ATTACK));
+				return;
 			}
 			else {
 				histogramOverlay.addEvent(EventType.USE, getInputDelay(EventType.USE), getServerDelay(EventType.USE));
+				return;
 			}
 		}
 
 		if (removeFormatting(menuOption).equals("Use Special Attack")) {
 			histogramOverlay.addEvent(EventType.SPECIAL_ATTACK, getInputDelay(EventType.SPECIAL_ATTACK), getServerDelay(EventType.SPECIAL_ATTACK));
+			return;
 		}
 
 		if (menuOption.equals("Attack")) {
 			histogramOverlay.addEvent(EventType.ATTACK, getInputDelay(EventType.ATTACK), getServerDelay(EventType.ATTACK));
+			return;
 		}
 
 		if (menuOption.equals("Activate") || menuOption.equals("Deactivate")) {
 			histogramOverlay.addEvent(EventType.PRAYER, getInputDelay(EventType.PRAYER), getServerDelay(EventType.PRAYER));
+			return;
 		}
+
+		if (handleCustomConfig(menuOption, menuTarget, config.custom1Interaction(), config.custom1Target(), EventType.CUSTOM_1))
+			return;
 	}
 
 	@Subscribe
@@ -183,8 +196,27 @@ public class HistogramPlugin extends Plugin
 				return config.specialattackConst() / 1000f + (config.specialattackMult() / 1000f * playercount / 1000f);
 			case PRAYER:
 				return config.prayerConst() / 1000f + (config.prayerMult() / 1000f * playercount / 1000f);
+			case CUSTOM_1:
+				return config.custom1Const() / 1000f + (config.custom1Mult() / 1000f * playercount / 1000f);
 			default:
 				return 0;
 		}
+	}
+
+	private boolean handleCustomConfig(String menuOption, String menuTarget, String option, String target, EventType type)
+	{
+		if (option.isEmpty() && target.isEmpty())
+			return false;
+
+		if (option.isEmpty() || option.equals(menuOption))
+		{
+			if (target.isEmpty() || target.equals(menuTarget))
+			{
+				histogramOverlay.addEvent(type, getInputDelay(type), getServerDelay(type));
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

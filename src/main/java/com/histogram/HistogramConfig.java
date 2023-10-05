@@ -24,9 +24,17 @@ public interface HistogramConfig extends Config
 	String eventSection = "Events";
 
 	@ConfigSection(
+			name = "Custom",
+			description = "Additional Inputs",
+			position = 2,
+			closedByDefault = true
+	)
+	String customSection = "Custom Inputs";
+
+	@ConfigSection(
 			name = "Advanced",
 			description = "Advanced Settings",
-			position = 2,
+			position = 3,
 			closedByDefault = true
 	)
 	String advancedSection = "Advanced";
@@ -453,5 +461,66 @@ public interface HistogramConfig extends Config
 	default int equipMult()
 	{
 		return 90;
+	}
+
+	@Alpha
+	@ConfigItem(
+			keyName = "custom1color",
+			name = "Custom 1 Color",
+			description = "Color of custom events",
+			section = customSection,
+			position = 0
+	)
+	default Color custom1Color()
+	{
+		return new Color(255, 255, 255, 255);
+	}
+
+	@ConfigItem(
+			keyName = "custom1interaction",
+			name = "Custom 1 Interaction",
+			description = "Event to use for custom 1",
+			section = customSection,
+			position = 0
+	)
+	default String custom1Interaction()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "custom1target",
+			name = "Custom 1 Target",
+			description = "Interaction target to use for custom 1",
+			section = customSection,
+			position = 0
+	)
+	default String custom1Target()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom1const",
+			name = "Custom 1 Delay Constant",
+			description = "The value to add to ping to delay custom 1 inputs (in milliseconds)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom1Const()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delayequipmult",
+			name = "Custom 1 Delay Mult",
+			description = "The value to add to ping to delay custom 1 inputs, multiplied by playercount (x1000)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom1Mult()
+	{
+		return 60;
 	}
 }

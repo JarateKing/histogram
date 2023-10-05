@@ -10,4 +10,6 @@ public enum EventType {
     ATTACK,
     SPECIAL_ATTACK,
     USE,
+
+    CUSTOM_1,
 }
