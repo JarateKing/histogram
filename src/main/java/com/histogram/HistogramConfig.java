@@ -523,4 +523,248 @@ public interface HistogramConfig extends Config
 	{
 		return 60;
 	}
+
+	@Alpha
+	@ConfigItem(
+			keyName = "custom2color",
+			name = "Custom 2 Color",
+			description = "Color of custom events",
+			section = customSection,
+			position = 0
+	)
+	default Color custom2Color()
+	{
+		return new Color(255, 255, 255, 255);
+	}
+
+	@ConfigItem(
+			keyName = "custom2interaction",
+			name = "Custom 2 Interaction",
+			description = "Event to use for Custom 2",
+			section = customSection,
+			position = 0
+	)
+	default String custom2Interaction()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "custom2target",
+			name = "Custom 2 Target",
+			description = "Interaction target to use for Custom 2",
+			section = customSection,
+			position = 0
+	)
+	default String custom2Target()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom2const",
+			name = "Custom 2 Delay Constant",
+			description = "The value to add to ping to delay Custom 2 inputs (in milliseconds)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom2Const()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom2mult",
+			name = "Custom 2 Delay Mult",
+			description = "The value to add to ping to delay Custom 2 inputs, multiplied by playercount (x1000)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom2Mult()
+	{
+		return 60;
+	}
+
+	@Alpha
+	@ConfigItem(
+			keyName = "custom3color",
+			name = "Custom 3 Color",
+			description = "Color of custom events",
+			section = customSection,
+			position = 0
+	)
+	default Color custom3Color()
+	{
+		return new Color(255, 255, 255, 255);
+	}
+
+	@ConfigItem(
+			keyName = "custom3interaction",
+			name = "Custom 3 Interaction",
+			description = "Event to use for Custom 3",
+			section = customSection,
+			position = 0
+	)
+	default String custom3Interaction()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "custom3target",
+			name = "Custom 3 Target",
+			description = "Interaction target to use for Custom 3",
+			section = customSection,
+			position = 0
+	)
+	default String custom3Target()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom3const",
+			name = "Custom 3 Delay Constant",
+			description = "The value to add to ping to delay Custom 3 inputs (in milliseconds)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom3Const()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom3mult",
+			name = "Custom 3 Delay Mult",
+			description = "The value to add to ping to delay Custom 3 inputs, multiplied by playercount (x1000)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom3Mult()
+	{
+		return 60;
+	}
+
+	@Alpha
+	@ConfigItem(
+			keyName = "custom4color",
+			name = "Custom 4 Color",
+			description = "Color of custom events",
+			section = customSection,
+			position = 0
+	)
+	default Color custom4Color()
+	{
+		return new Color(255, 255, 255, 255);
+	}
+
+	@ConfigItem(
+			keyName = "custom4interaction",
+			name = "Custom 4 Interaction",
+			description = "Event to use for Custom 4",
+			section = customSection,
+			position = 0
+	)
+	default String custom4Interaction()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "custom4target",
+			name = "Custom 4 Target",
+			description = "Interaction target to use for Custom 4",
+			section = customSection,
+			position = 0
+	)
+	default String custom4Target()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom4const",
+			name = "Custom 4 Delay Constant",
+			description = "The value to add to ping to delay Custom 4 inputs (in milliseconds)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom4Const()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom4mult",
+			name = "Custom 4 Delay Mult",
+			description = "The value to add to ping to delay Custom 4 inputs, multiplied by playercount (x1000)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom4Mult()
+	{
+		return 60;
+	}
+
+	@Alpha
+	@ConfigItem(
+			keyName = "custom5color",
+			name = "Custom 5 Color",
+			description = "Color of custom events",
+			section = customSection,
+			position = 0
+	)
+	default Color custom5Color()
+	{
+		return new Color(255, 255, 255, 255);
+	}
+
+	@ConfigItem(
+			keyName = "custom5interaction",
+			name = "Custom 5 Interaction",
+			description = "Event to use for Custom 5",
+			section = customSection,
+			position = 0
+	)
+	default String custom5Interaction()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "custom5target",
+			name = "Custom 5 Target",
+			description = "Interaction target to use for Custom 5",
+			section = customSection,
+			position = 0
+	)
+	default String custom5Target()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom5const",
+			name = "Custom 5 Delay Constant",
+			description = "The value to add to ping to delay Custom 5 inputs (in milliseconds)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom5Const()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+			keyName = "delaycustom5mult",
+			name = "Custom 5 Delay Mult",
+			description = "The value to add to ping to delay Custom 5 inputs, multiplied by playercount (x1000)",
+			section = advancedSection,
+			position = 3
+	)
+	default int custom5Mult()
+	{
+		return 60;
+	}
 }

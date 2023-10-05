@@ -175,6 +175,14 @@ class HistogramOverlay extends Overlay
                 return config.prayerColor();
             case CUSTOM_1:
                 return config.custom1Color();
+            case CUSTOM_2:
+                return config.custom2Color();
+            case CUSTOM_3:
+                return config.custom3Color();
+            case CUSTOM_4:
+                return config.custom4Color();
+            case CUSTOM_5:
+                return config.custom5Color();
             default:
                 return config.tickColor();
         }

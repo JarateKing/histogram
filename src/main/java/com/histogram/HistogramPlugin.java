@@ -120,6 +120,14 @@ public class HistogramPlugin extends Plugin
 
 		if (handleCustomConfig(menuOption, menuTarget, config.custom1Interaction(), config.custom1Target(), EventType.CUSTOM_1))
 			return;
+		if (handleCustomConfig(menuOption, menuTarget, config.custom2Interaction(), config.custom2Target(), EventType.CUSTOM_2))
+			return;
+		if (handleCustomConfig(menuOption, menuTarget, config.custom3Interaction(), config.custom3Target(), EventType.CUSTOM_3))
+			return;
+		if (handleCustomConfig(menuOption, menuTarget, config.custom4Interaction(), config.custom4Target(), EventType.CUSTOM_4))
+			return;
+		if (handleCustomConfig(menuOption, menuTarget, config.custom5Interaction(), config.custom5Target(), EventType.CUSTOM_5))
+			return;
 	}
 
 	@Subscribe
@@ -198,6 +206,14 @@ public class HistogramPlugin extends Plugin
 				return config.prayerConst() / 1000f + (config.prayerMult() / 1000f * playercount / 1000f);
 			case CUSTOM_1:
 				return config.custom1Const() / 1000f + (config.custom1Mult() / 1000f * playercount / 1000f);
+			case CUSTOM_2:
+				return config.custom2Const() / 1000f + (config.custom2Mult() / 1000f * playercount / 1000f);
+			case CUSTOM_3:
+				return config.custom3Const() / 1000f + (config.custom3Mult() / 1000f * playercount / 1000f);
+			case CUSTOM_4:
+				return config.custom4Const() / 1000f + (config.custom4Mult() / 1000f * playercount / 1000f);
+			case CUSTOM_5:
+				return config.custom5Const() / 1000f + (config.custom5Mult() / 1000f * playercount / 1000f);
 			default:
 				return 0;
 		}

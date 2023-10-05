@@ -12,4 +12,8 @@ public enum EventType {
     USE,
 
     CUSTOM_1,
+    CUSTOM_2,
+    CUSTOM_3,
+    CUSTOM_4,
+    CUSTOM_5,
 }
