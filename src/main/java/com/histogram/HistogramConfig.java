@@ -513,7 +513,7 @@ public interface HistogramConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "delayequipmult",
+			keyName = "delaycustom1mult",
 			name = "Custom 1 Delay Mult",
 			description = "The value to add to ping to delay custom 1 inputs, multiplied by playercount (x1000)",
 			section = advancedSection,
